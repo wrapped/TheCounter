@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/linearLayout"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".MainActivity">
+
+    <TextView
+        android:id="@+id/txtIncrement"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:text="Increment amount: "
+        android:textAlignment="center"
+        android:textSize="24sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintBottom_toTopOf="@id/txtCountTotal"/>
+
+    <TextView
+        android:id="@+id/txtCountTotal"
+        android:layout_width="match_parent"
+        android:layout_height="200dp"
+        android:autoSizeMaxTextSize="250sp"
+        android:autoSizeMinTextSize="16sp"
+        android:autoSizeStepGranularity="2sp"
+        android:autoSizeTextType="uniform"
+        android:fontFamily="@font/roboto_mono"
+        android:text="0"
+        android:textAlignment="center"
+        android:textAppearance="@style/TextAppearance.AppCompat.Display1"
+        android:layout_marginTop="50dp"
+        app:layout_constraintTop_toBottomOf="@+id/txtIncrement"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+
+        />
+
+    <Button
+        android:id="@+id/btnPlus"
+        android:layout_width="256dp"
+        android:layout_height="128dp"
+        android:fontFamily="@font/roboto_mono_medium"
+        android:onClick="add"
+        android:text="+"
+        android:textColor="@color/colorButtonText"
+        android:textSize="75sp"
+        android:background="@drawable/buttons"
+        android:layout_marginBottom="20dp"
+        app:layout_constraintBottom_toTopOf="@+id/btnMinus"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        />
+
+    <Button
+        android:id="@+id/btnMinus"
+        android:layout_width="256dp"
+        android:layout_height="128dp"
+        android:layout_marginBottom="50dp"
+        android:fontFamily="@font/roboto_mono_medium"
+        android:onClick="subtract"
+        android:text="-"
+        android:textColor="@color/colorButtonText"
+        android:textSize="75sp"
+        android:background="@drawable/buttons"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        />
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>
