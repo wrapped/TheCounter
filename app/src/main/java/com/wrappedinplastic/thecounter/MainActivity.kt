@@ -23,7 +23,7 @@ class MainActivity : AppCompatActivity() {
         setContentView(R.layout.activity_main)
 
         val pref : SharedPreferences = PreferenceManager.getDefaultSharedPreferences(this)
-        val increase = pref.getString("increase", "")
+        val increase = pref.getString("increase", "1")
         txtIncrement.text = "Increment amount: " + increase.toString()
 
         val on = pref.getBoolean("theme_switch", false)
@@ -48,6 +48,21 @@ class MainActivity : AppCompatActivity() {
         txtCountTotal.text = count
         countTotal = count.toString().toInt()
     }
+    fun add(view: View) {
+        val pref : SharedPreferences = PreferenceManager.getDefaultSharedPreferences(this)
+        val increase = pref.getString("increase", "1")
+        countIncrease = increase.toString().toInt()
+        countTotal += countIncrease
+        txtCountTotal.text = countTotal.toString()
+    }
+
+    fun subtract(view: View) {
+        val pref : SharedPreferences = PreferenceManager.getDefaultSharedPreferences(this)
+        val increase = pref.getString("increase", "1")
+        countIncrease = increase.toString().toInt()
+        countTotal -= countIncrease
+        txtCountTotal.text = countTotal.toString()
+    }
 
     override fun onKeyDown(keyCode: Int, event: KeyEvent?): Boolean {
 
@@ -57,7 +72,7 @@ class MainActivity : AppCompatActivity() {
         if (on) {
             if (keyCode == KeyEvent.KEYCODE_VOLUME_UP) {
                 val pref: SharedPreferences = PreferenceManager.getDefaultSharedPreferences(this)
-                val increase = pref.getString("increase", "")
+                val increase = pref.getString("increase", "1")
                 countIncrease = increase.toString().toInt()
                 countTotal += countIncrease
                 txtCountTotal.text = countTotal.toString()
@@ -65,7 +80,7 @@ class MainActivity : AppCompatActivity() {
             }
             if (keyCode == KeyEvent.KEYCODE_VOLUME_DOWN) {
                 val pref: SharedPreferences = PreferenceManager.getDefaultSharedPreferences(this)
-                val increase = pref.getString("increase", "")
+                val increase = pref.getString("increase", "1")
                 countIncrease = increase.toString().toInt()
                 countTotal -= countIncrease
                 txtCountTotal.text = countTotal.toString()
@@ -73,22 +88,6 @@ class MainActivity : AppCompatActivity() {
             }
         }
         return super.onKeyDown(keyCode, event)
-    }
-
-    fun add(view: View) {
-        val pref : SharedPreferences = PreferenceManager.getDefaultSharedPreferences(this)
-        val increase = pref.getString("increase", "")
-        countIncrease = increase.toString().toInt()
-        countTotal += countIncrease
-        txtCountTotal.text = countTotal.toString()
-    }
-
-    fun subtract(view: View) {
-        val pref : SharedPreferences = PreferenceManager.getDefaultSharedPreferences(this)
-        val increase = pref.getString("increase", "")
-        countIncrease = increase.toString().toInt()
-        countTotal -= countIncrease
-        txtCountTotal.text = countTotal.toString()
     }
 
     override fun onCreateOptionsMenu(menu: Menu?): Boolean {
@@ -110,7 +109,7 @@ class MainActivity : AppCompatActivity() {
                 true
             }
             R.id.menuAbout -> {
-                Toast.makeText(this, "By Wrapped in Plastic Software", Toast.LENGTH_SHORT).show()
+                startActivity(Intent(this@MainActivity, AboutActivity::class.java))
                 true
             }
             else -> super.onOptionsItemSelected(item)
